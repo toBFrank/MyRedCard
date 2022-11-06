@@ -5,6 +5,7 @@ import datetime
 import os
 import bcrypt
 import uuid
+import math
 from flask_cors import CORS
 
 
@@ -85,7 +86,7 @@ def register():
 		HashedPassword = bcrypt.hashpw(passGivenBy.encode('utf-8'),salted) 
 		res = cur.execute("UPDATE user SET passHash ='" + str(HashedPassword)[2:len(HashedPassword)+2] + "' where name = '" + userNameGivenBy + "'") 
 
-		resp = make_response(render_template('index.html'))
+		resp = make_response(render_template('register.html'))
 		cookieID = uuid.uuid4()
 		resp.set_cookie('UserID', str(cookieID).encode('utf-8'))
 		cur.execute("UPDATE user SET cookie = '" + str(cookieID) + "' WHERE name ='" + userNameGivenBy + "'")
@@ -108,8 +109,13 @@ def classDisp():
 
 @app.route('/flashpost', methods=['POST'])
 def flashpost():
-    print(request.get_data())
-    return 'cool'
+	jsonInputs = json.loads(request.get_data())
+	for i in range(len(jsonInputs)):
+		arrayToDo = jsonInputs[str(i)]
+		flashIdTODo = math.random()
+		cur.execute("UPDATE Flash set class = 1 set user = 1")
+		cur.execute("UPDATE qa set Q = '" + arrayToDo[0] +"' set A = '" + arrayToDo[1]"'")
+	return 'cool'
 
 
 @app.route('/quizMake', methods=['POST'])

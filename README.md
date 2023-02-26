@@ -1,5 +1,7 @@
 # RedCard
 ![CardMake](https://user-images.githubusercontent.com/100398844/221386666-7cedfb25-5f34-4601-be29-33cbe4cd0a23.png)
+![CardView](https://user-images.githubusercontent.com/100398844/221386717-ccde396c-94b6-4b7a-855d-01ad0b67fd90.png)
+
 
 ![RedCard](/assets/RedCardLogo.png)
 
